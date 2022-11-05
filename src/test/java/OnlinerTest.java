@@ -15,6 +15,7 @@ public class OnlinerTest {
         WebDriver driver = new ChromeDriver();
         String url = "http://www.onliner.by";
         String xpath = "//div[@class='footer-style__copy']";
+        String expected = "© 2001—2022 Onlíner";
 
         // TODO WHEN
         driver.get(url);
@@ -23,8 +24,7 @@ public class OnlinerTest {
         String actual = element.getText();
 
         // TODO THEN
-        System.out.println(actual);
+        Assert.assertEquals(expected, actual);
         driver.quit();
-        Assert.fail();
     }
 }
