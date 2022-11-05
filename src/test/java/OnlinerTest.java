@@ -27,4 +27,16 @@ public class OnlinerTest {
         Assert.assertEquals(expected, actual);
         driver.quit();
     }
+
+    public void testOpenBaraholkaPage() {
+        // TODO GIVEN
+        // open onliner.by
+        // найти и click on Барахол
+
+        // TODO WHEN
+        // отыскать веб элемент заголовок страницы Барахолка
+        // получить текст из веб элемента
+
+        // выполнить проверку текстов
+    }
 }
