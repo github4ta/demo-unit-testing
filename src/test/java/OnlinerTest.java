@@ -27,16 +27,31 @@ public class OnlinerTest {
         Assert.assertEquals(expected, actual);
         driver.quit();
     }
-
+    @Test
     public void testOpenBaraholkaPage() {
+
         // TODO GIVEN
         // open onliner.by
         // найти и click on Барахол
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        String url = "http://www.onliner.by";
+        String xpathBaraholkaLink = "//a[@href='https://baraholka.onliner.by/']";
+        String xpathBaraholkaTitle = "//h1[@class='m-title-i']";
+        String expected = "Барахолка";
+        driver.get(url);
 
         // TODO WHEN
         // отыскать веб элемент заголовок страницы Барахолка
         // получить текст из веб элемента
+        WebElement elementBaraholkaLink = driver.findElement(By.xpath(xpathBaraholkaLink));
+        elementBaraholkaLink.click();
+        Util.waiter();
+        WebElement elementBaraholkaTitle = driver.findElement(By.xpath(xpathBaraholkaTitle));
+        String actual = elementBaraholkaTitle.getText();
 
         // выполнить проверку текстов
+        Assert.assertEquals(expected, actual);
+        driver.quit();
     }
 }
