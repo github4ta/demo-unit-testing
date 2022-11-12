@@ -12,41 +12,15 @@ public class WeightCalculatorTest {
         // TODO GIVEN
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-        String url = "https://svyatoslav.biz/testlab/wt/index.php";
-        String xpathInputName = "//input[@name='name']";
-        String xpathInputHeight = "//input[@name='height']";
-        String xpathInputWeight = "//input[@name='weight']";
-        String xpathInputGenderMan = "//input[@value='m']";
-        String xpathButtonSubmit = "//input[@type='submit']";
-        String xpathResultText = "//tbody/tr[2]/td[2]";
-        String expected = "Идеальная масса тела";
+        WeightCalculatorPage page = new WeightCalculatorPage(driver);
 
         // TODO WHEN
-        driver.get(url);
-        Util.waiter();
-
-        By byInputName = By.xpath(xpathInputName);
-        WebElement elementInputName = driver.findElement(byInputName);
-        By byInputHeight = By.xpath(xpathInputHeight);
-        WebElement elementInputHeight = driver.findElement(byInputHeight);
-        By byInputWeight = By.xpath(xpathInputWeight);
-        WebElement elementInputWeight = driver.findElement(byInputWeight);
-        By byInputGenderMan = By.xpath(xpathInputGenderMan);
-        WebElement elementInputGenderMan = driver.findElement(byInputGenderMan);
-        By byButtonSubmit = By.xpath(xpathButtonSubmit);
-        WebElement elementButtonSubmit = driver.findElement(byButtonSubmit);
-
-
-        elementInputName.sendKeys("Vasia");
-        elementInputHeight.sendKeys("180");
-        elementInputWeight.sendKeys("80");
-        elementInputGenderMan.click();
-
-        Util.waiter();
-        elementButtonSubmit.click();
+        driver.get(page.url);
+        page.myMethod("Vasya", "180", "80");
+        String actual = page.getResultText();
 
         // TODO THEN
-        // Assert.assertEquals(expected, actual);
+        Assert.assertEquals(page.expected, actual);
         driver.quit();
     }
 }
