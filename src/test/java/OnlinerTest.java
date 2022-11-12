@@ -19,7 +19,8 @@ public class OnlinerTest {
 
         // TODO WHEN
         driver.get(url);
-        WebElement element = driver.findElement(By.xpath(xpath));
+        By byXpath = By.xpath(xpath);
+        WebElement element = driver.findElement(byXpath);
         Util.waiter();
         String actual = element.getText();
 
