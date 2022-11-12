@@ -44,9 +44,16 @@ public class WeightCalculatorTest {
 
         Util.waiter();
         elementButtonSubmit.click();
+        Util.waiter();
+
+        By byResultText = By.xpath(xpathResultText);
+        WebElement elementResultText = driver.findElement(byResultText);
+        String actual = elementResultText.getText();
+        System.out.println(actual);
 
         // TODO THEN
-        // Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expected, actual);
+
         driver.quit();
     }
 }
