@@ -5,14 +5,17 @@ import org.openqa.selenium.WebElement;
 public class WeightCalculatorPage {
 
     WebDriver driver;
-    String url = "https://svyatoslav.biz/testlab/wt/index.php";
-    String xpathInputName = "//input[@name='name']";
-    String xpathInputHeight = "//input[@name='height']";
-    String xpathInputWeight = "//input[@name='weight']";
-    String xpathInputGenderMan = "//input[@value='m']";
-    String xpathButtonSubmit = "//input[@type='submit']";
-    String xpathResultText = "//tbody/tr[2]/td[2]";
-    String expected = "Идеальная масса тела";
+    public final String URL = "https://svyatoslav.biz/testlab/wt/index.php";
+    private String xpathInputName = "//input[@name='name']";
+    private String xpathInputHeight = "//input[@name='height']";
+    private String xpathInputWeight = "//input[@name='weight']";
+    private String xpathInputGenderMan = "//input[@value='m']";
+    private String xpathButtonSubmit = "//input[@type='submit']";
+    private String xpathResultText = "//tbody/tr[2]/td[2]";
+    public final String RESULT_TEXT_IDEAL = "Идеальная масса тела";
+    public final String RESULT_TEXT_LESS = "Слишком малая масса тела";
+    public final String RESULT_TEXT_MORE = "Незначительный избыток массы тела";
+    public final String RESULT_TEXT_EXCEED ="Значительный избыток массы тела, тучность";
 
     public WeightCalculatorPage(WebDriver driver){
         this.driver = driver;
@@ -53,7 +56,7 @@ public class WeightCalculatorPage {
         return elementResultText.getText();
     }
 
-    public void myMethod(String name, String height, String weight){
+    public void fillFormAndClickSubmit(String name, String height, String weight){
         typeName(name);
         typeHeight(height);
         typeWeight(weight);
