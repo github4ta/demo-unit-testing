@@ -23,13 +23,30 @@ public class WeightCalculatorTest {
 
         // TODO WHEN
         driver.get(url);
-        By byXpath = By.xpath(xpath);
-        WebElement element = driver.findElement(byXpath);
         Util.waiter();
-        String actual = element.getText();
+
+        By byInputName = By.xpath(xpathInputName);
+        WebElement elementInputName = driver.findElement(byInputName);
+        By byInputHeight = By.xpath(xpathInputHeight);
+        WebElement elementInputHeight = driver.findElement(byInputHeight);
+        By byInputWeight = By.xpath(xpathInputWeight);
+        WebElement elementInputWeight = driver.findElement(byInputWeight);
+        By byInputGenderMan = By.xpath(xpathInputGenderMan);
+        WebElement elementInputGenderMan = driver.findElement(byInputGenderMan);
+        By byButtonSubmit = By.xpath(xpathButtonSubmit);
+        WebElement elementButtonSubmit = driver.findElement(byButtonSubmit);
+
+
+        elementInputName.sendKeys("Vasia");
+        elementInputHeight.sendKeys("180");
+        elementInputWeight.sendKeys("80");
+        elementInputGenderMan.click();
+
+        Util.waiter();
+        elementButtonSubmit.click();
 
         // TODO THEN
-        Assert.assertEquals(expected, actual);
+        // Assert.assertEquals(expected, actual);
         driver.quit();
     }
 }
