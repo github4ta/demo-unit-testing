@@ -15,9 +15,14 @@ public class MailRuTest {
 
         //TODO
         driver.get("https://mail.ru");
+        //This won't work
+       // driver.switchTo().frame("1670413506316");
+        String xpathFrame="//iframe[@class='search-arrow__frame']";
+        WebElement iframe = driver.findElement(By.xpath(xpathFrame));
+        driver.switchTo().frame(iframe);
+
 
         String xpath = "//input[@name='text']";
-
         By bySearch = By.xpath(xpath);
         WebElement webElementSearch = driver.findElement(bySearch);
 
